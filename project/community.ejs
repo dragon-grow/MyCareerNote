@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--헤더 영역 분할-->
+        <% include ./head.ejs %>
+		
+		<!--로그인 성공여부 확인 후 알림창 출력-->
+		<% if(result==true){ %>
+		<script> alert("저장이 완료되었습니다!"); </script>
+		<% } else if(result==false) {%>
+		<script> alert("저장 실패하였습니다."); </script>
+		<% } %>
+    </head>
+	<body class="w3-theme-l5">
+		<!--네비게이션바 영역 분리-->
+    	<% include ./nav.ejs %>
+		<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+		  <!-- 2단 열 분리 시작 -->
+			<div>
+				<!-- 왼쪽 열 시작 -->
+				<div class="w3-third">
+					<div class="w3-container w3-card w3-white w3-margin-bottom">
+						<!-- 글쓰기 카드 -->
+						<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-pencil-square-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>New Posts!</h2>
+						<!-- 글 제목, 내용, 제출 버튼 폼 -->
+						<form method="post" action="/process/addpost">
+							<input type="text" name="title" class="respon-input" style="width:100%;" placeholder="제목" required><br><br>
+							<textarea name="memo" class="respon-input" style="width:100%;height:100px;" placeholder="내용" required></textarea><br>
+							<input type="submit" value="upload" name="" class="w3-button w3-block w3-red w3-section">
+					  	</form>
+					</div>
+					<br>
+				</div>
+				<!-- 왼쪽 열 종료 -->
+
+				<!-- 오른쪽 열 시작 -->
+				<div class="w3-twothird">
+					<div class="w3-container w3-card w3-white w3-margin-bottom col-2">
+						<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-facebook-square fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Bulletin Board</h2>
+						<!--만약 게시글 데이터를 받아 왔다면, 아래의 테이블 출력-->
+						<%if(data.length>0){%>
+							<table class="w3-table-all w3-margin-bottom">
+								<tr><th>No</th><th>제목</th><th>내용</th><th>작성자</th></tr>
+								<%var i = 0;%>
+								<%data.forEach(function(item){%>
+								<%i++;%>
+								<tr>
+									<td><%=i%></td>
+									<td><%=item.title%></td>
+									<td><%=item.memo%></td>
+									<td><%=item.name%></td>
+								</tr>
+								<%})%>
+							</table>
+						<!--만약 게시물이 없다면 아래의 <h5> 태그 출력-->
+						<%} else {%><h5 class="w3-opacity"><b>이런.... 게시물이 없네요...</b></h5><br><%}%>
+					</div>
+				</div>  
+				<!-- 오른쪽 열 종료 -->
+		  	</div>
+		  <!-- 2단 열 분리 종료 -->	
+		</div>
+		<br>
+
+		<!-- 풋터 영역 분리 -->
+		<% include ./footer.ejs %>
+	</body>
+</html> 

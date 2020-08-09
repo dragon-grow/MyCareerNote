@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!-- 헤더 영역 분리 -->
+		<% include ./loginHead.ejs %>
+	</head>
+    <body>
+    
+        <section>
+			<!--로그인 화면 영역 -->
+            <div class="card" id="login_basic">
+				<h1 class="write_font">나의 취업준비 노트</h1>
+                <h1>로그인</h1>
+				<!--로그인 정보 입력 폼 -> 서버에 로그인 요청 -->
+                <form method="post" action="/process/login">
+					<input type="text" name="id" class="respon-input" placeholder="ID" required><br>
+					<input type="password" name="password" class="respon-input" placeholder="Password" required><br><br>
+					<input type="submit" value="Login" name="" class="button">
+					<!--sign up 버튼을 클릭하면 로그인 화면은 사라지고 회원가입 창이 등장 -->
+					<input type="button" class="button_create" value="Sign Up"
+							onclick="document.getElementById('login_basic').style.display='none';
+									 document.getElementById('login_create').style.display='block'">
+                </form>
+            </div>
+        	<!--회원 가입 화면-->
+            <div class="create_card" id="login_create">
+				<h1 class="write_font">나의 취업준비 노트</h1>
+                <h1>희원가입</h1>
+				<!--회원 정보 입력 폼 -> 서버에 회원가입 요청 -->
+                <form method="post" action="/process/adduser">
+					<input type="text" name="name" class="respon-input" placeholder="Name" required><br>
+					<input type="text" name="id" class="respon-input" placeholder="ID" required><br>
+					<input type="password" name="password" class="respon-input" placeholder="Password" required><br>
+					<input type="submit" value="Submit" name="" class="button">
+					<!--login 버튼을 클릭하면 회원가입 화면은 사라지고 로그인 창이 등장 -->
+					<input type="button" class="button_create" value="Login"
+							onclick="document.getElementById('login_basic').style.display='block';
+									 document.getElementById('login_create').style.display='none'">
+                </form>
+            </div>
+        </section>
+        
+        <footer id="footer">
+            <p class="footer-font">Copyright&copy; 2018 Choyongtae. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
+

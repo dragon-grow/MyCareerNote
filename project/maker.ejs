@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--헤더영역 분리-->
+        <% include ./head.ejs %>
+		<script>
+			//문서가 준비가 되면 설정해둔 영역에 지도를 출력하도록 함. 다음 지도API사용@
+			$(function(){
+			   $(document).ready(function(){
+					var container = document.getElementById('map');
+					var options = {
+						//우리학교 2공학관 위도, 경도
+						center: new daum.maps.LatLng(36.767, 127.282),
+						level: 3
+					};
+					var map = new daum.maps.Map(container, options);
+			   }); 
+			});
+		</script>
+    </head>
+	<body class="w3-theme-l5">
+		<!--네비게이션바 영역 분할-->
+		<% include ./nav.ejs %>
+		<div class="w3-container " style="margin-top:80px;">
+			<div class="w3-card w3-round w3-white w3-content w3-padding">
+				<h2 class="w3-text-grey"><i class="fa fa-address-card fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>만든이...</h2>
+				<!--만든이 정보 삽입부분 시작-->
+				<div class="w3-padding">
+					<h6 class="w3-opacity">2018년 2학기 모바일 프로그래밍 텀 프로젝트 수행결과 입니다.</h6>
+					<h6 class="w3-opacity">2014136121 조용태 - Back-End 동작 담당</h6>
+					<h6 class="w3-opacity">2014136038 김희수 - Front-End 설계</h6>
+					<p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> 2공학관 421호</p>
+					<div id="map" style="width:100%;height:350px;" class="w3-margin-bottom w3-margin-top"></div>
+					<p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: 010-2920-0163</p>	
+				</div> 
+				<!--만든이 정보 삽입부분 종료-->
+			</div>
+		</div>
+		<br>
+		<!--풋터 영역 분할-->
+		<% include ./footer.ejs %>
+	</body>
+</html> 

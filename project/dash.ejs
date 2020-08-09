@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--헤더 영역 분할-->
+        <% include ./head.ejs %>
+		<script>
+			$(function(){
+				//html화면이 모두 로드되면 아래의 스크립트들이 자동으로 실행되도록 설정
+			   $(document).ready(function(){
+					// 메뉴 표시 함수
+					function openNav() {
+						var x = document.getElementById("navDemo");
+						if (x.className.indexOf("w3-show") == -1) {
+							x.className += " w3-show";
+						} else { 
+							x.className = x.className.replace(" w3-show", "");
+						}
+					}
+					// 기업 배너 슬라이드 동작 설정
+					var myIndex = 0;
+					carousel();
+					function carousel() {
+						var i;
+						var x = document.getElementsByClassName("mySlides");
+						for (i = 0; i < x.length; i++) {
+							x[i].style.display = "none";  
+						}
+						myIndex++;
+						if (myIndex > x.length) {myIndex = 1}    
+						x[myIndex-1].style.display = "block";  
+						setTimeout(carousel, 2000); // 2초에 한 번 변경
+					}
+			   }); 
+			});
+			//미니 채용공고 부분 아코디언 메뉴 효과 적용, 클릭하면 해당 내용이 표시되도록 설정
+			function myFunction(id) {
+				var x = document.getElementById(id);
+				if (x.className.indexOf("w3-show") == -1) {
+					x.className += " w3-show";
+					x.previousElementSibling.className += " w3-theme-d1";
+				} else { 
+					x.className = x.className.replace("w3-show", "");
+					x.previousElementSibling.className = 
+					x.previousElementSibling.className.replace(" w3-theme-d1", "");
+				}
+			}	
+		</script>
+    </head>
+    
+    <body class="w3-theme-l5">
+		<!-- 네이게이션 메뉴 바 분할-->
+        <% include ./nav.ejs %>
+        
+		<!-- 네이게이션 바와 풋터를 제와한 나머지 전체 컨테이너 시작-->
+		<div class="w3-container w3-content" style="max-width:1680px;margin-top:50px">
+			<!-- 3단 열 시작 -->
+			<div class="w3-row">
+				<!-- 왼쪽 열 시작 -->
+				<div class="w3-col am2">
+					<!-- 이수학점 카드 -->
+					<div class="w3-card w3-white w3-margin-top">
+						<div class="w3-container">
+							<h2 class="w3-text-grey w3-padding-10"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>My Grade</h2>
+							<% if(grade.major>0){ %>	<!--만약 성적이 있다면!!-->
+							<p>전공학점 (필요:76)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.major/76)*100%>%"><%=grade.major%></div>
+							</div>
+
+							<p>교양학점 (필요:18)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">	
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.culture/18)*100%>%"><%=grade.culture%></div>
+							</div>
+
+							<p>HRD학점 (필요:14)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.hrd/14)*100%>%"><%=grade.hrd%></div>
+							</div>
+
+							<p>MSC학점 (필요:30)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.msc/30)*100%>%"><%=grade.msc%></div>
+							</div>
+
+							<p>자유학점 (필요:12)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.free/12)*100%>%"><%=grade.free%></div>
+							</div>
+
+							<p>총 이수학점 (필요:150)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-orange" style="width:<%=(total/150)*100%>%"><%=total%></div>
+							</div>
+
+							<p>학점 평균 (만점:4.5)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-orange" style="width:<%=(grade.total/4.5)*100%>%"><%=grade.total%></div>
+							</div>
+							<hr>
+							<p>TOEIC (만점:600)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<%=(grade.toeic/600)*100%>%"><%=grade.toeic%></div>
+							</div>
+
+							<p>현장실습 (만점:600)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge <%=field%>" style="width:100%"><%=(grade.field)%></div>
+							</div>
+
+							<p>졸업작품 (만점:600)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge <%=art%>" style="width:100%"><%=grade.art%></div>
+							</div>
+
+							<p>기술자격 (만점:600)</p>
+							<div class="w3-light-grey w3-round-xlarge w3-small">
+								<div class="w3-container w3-center w3-round-xlarge <%=license%>" style="width:100%"><%=grade.field%></div>
+							</div>
+							<% } else {%>	<!--등록된 성적이 없다면, 아래의 문구 출력-->
+							<h5 class="w3-opacity"><b>이런.... 성적이 없으세요...</b></h5><br>
+							<a class="w3-button w3-theme-d2 w3-margin-bottom" href="/process/grade"><i class="fa fa-pencil"></i>  Add</a>
+							<% } %>
+						</div>      
+						<br>
+					</div> 
+					<br>
+					<!--영상 카드-->
+					<div class="w3-card w3-white">
+						<div class="w3-container">
+							<h4 class="w3-text-grey w3-padding-10"><i class="fa fa-video-camera fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>cheer up!</h4>
+							<video src="/project/src/video.mp4" controls width="100%" class="w3-margin-bottom"></video>
+						</div>
+					</div>
+					<br>
+				</div>
+				<!-- 왼쪽 열 종료 -->
+				<!-- 가운데 열 시작 -->
+				<div class="w3-col am8">
+					<!--취업공채 카드 시작-->
+					<div class="w3-container w3-card w3-white col-1"><br>
+						<div class="w3-container w3-padding">
+							<div class="w3-responsive">
+								<!--외부에서 월간 공채 정보프레임 그대로 가져오기-->
+								<iframe id="pageFrame" name="pageFrame" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week?edu=5" frameborder="0"
+								width="1000px" height="250px" scrolling="auto"></iframe> 
+							</div>
+						</div>
+					</div>
+					<!--취업공채 카드 종료-->
+
+					<!--포트폴리오 카드 시작-->
+					<div class="w3-container w3-card w3-white w3-margin-top col-1">
+						<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>My Portfolio</h2>
+						<!--여기부터 자바스크립트로 처리할 부분!-->
+						<% var count = work.length-1; %>
+						<!--만약 포트폴리오 정보를 서버에서 받았다면, 출력한다.-->
+						<% if(work.length>0){ %>
+						<% for(var i=count; i>=0; i--) {%>	<!--최근 데이터 부터 출력!! EJS의 특징인, 문서 내에서 자바스크립트 사용하기!-->
+							<div class="w3-container">
+								<h5 class="w3-opacity"><b><%=work[i].title%></b></h5>
+								<h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><%=work[i].due%></h6>
+								<p><%=work[i].memo%></p>
+								<hr>
+							</div>
+						<% }} else {%>	<!--포트폴리오 정보를 서버에서 받아오지 못했다면, 아래의 문구 출력-->
+						<h5 class="w3-opacity"><b>이런.... 경력이 없으세요...</b></h5><br>
+						<% } %>
+						<!--여기까지 자바스크립트로 처리할 부분!-->
+						<!--포트폴리오(이력) 추가 버튼!-->
+						<a class="w3-button w3-theme-d2 w3-margin-bottom" href="/process/resume"><i class="fa fa-pencil"></i>  Add</a>
+					</div>
+				</div>
+				<!-- 가운데 열 종료 -->
+				<!-- 오른쪽 열 시작 -->
+				<div class="w3-col am2">
+					<!--외부 서버로부터 받아온 실시간 취업배너 시작-->
+					<div class="w3-card w3-white w3-margin-top">
+						<div id="info" class="w3-container">
+							<h4 class="w3-text-grey w3-padding-10"><i class="fa fa-handshake-o fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>Recruitment</h4>
+							<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a href="<%=job1U%>"><%=job1N%></a></button>
+							<div id="Demo1" class="w3-hide w3-container">
+								<p href="<%=job1U%>"><%=job1T%></p>
+							</div>
+
+							<button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a href="<%=job1U%>"><%=job2N%></a></button>
+							<div id="Demo2" class="w3-hide w3-container">
+								<p><%=job2T%></p>
+							</div>	
+
+							<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a href="<%=job1U%>"><%=job3N%></a></button>
+							<div id="Demo3" class="w3-hide w3-container">
+								<p><%=job3T%></p>
+							</div>	
+
+							<button onclick="myFunction('Demo4')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a href="<%=job1U%>"><%=job4N%></a></button>
+							<div id="Demo4" class="w3-hide w3-container">
+								<p><%=job4T%></p>
+							</div>	
+
+							<button onclick="myFunction('Demo5')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i><a href="<%=job1U%>"><%=job5N%></a></button>
+							<div id="Demo5" class="w3-hide w3-container">
+								<p><%=job5T%></p>
+							</div>
+						</div>
+						<br>
+					</div>
+					<br>
+					<!--외부 서버로부터 받아온 실시간 취업배너 종료 -->
+					<!--기업정보 배너 시작-->
+					<!--배너는 자바스크립트 함수를 통하여 2초 간격으로 변화함-->
+					<div class="w3-card w3-white w3-center">
+						<div class="w3-container">
+							<div class="w3-content w3-section" style="max-width:500px">
+								<a href="https://www.woowahan.com/#/recruit/tech"><img class="mySlides" src="/project/src/baner1.jpg" style="width:100%"></a>
+								<a href="https://www.kakaobank.com/Corp/Recruit/Process"><img class="mySlides" src="/project/src/baner2.jpg" style="width:100%"></a>
+								<a href="https://recruit.navercorp.com/naver/recruitMain"><img class="mySlides" src="/project/src/baner3.jpg" style="width:100%"></a>
+								<a href="https://careers.google.com/"><img class="mySlides" src="/project/src/baner4.jpg" style="width:100%"></a>
+								<a href="https://www.apple.com/jobs/kr/"><img class="mySlides" src="/project/src/baner5.jpg" style="width:100%"></a>
+								<a href="http://www.samsungcareers.com/main.html"><img class="mySlides" src="/project/src/baner6.jpg" style="width:100%"></a>
+								<a href="http://apply.lg.com/main/Index.rpi"><img class="mySlides" src="/project/src/baner7.jpg" style="width:100%"></a>
+							</div>
+						</div>
+					</div>
+					<!--기업정보 배너 종료-->
+					<br>
+				</div>
+				<!-- 오른쪽 열 종료 -->
+			<!-- 3단 열 종료 -->
+			</div>
+		<!-- 네이게이션 바와 풋터를 제와한 나머지 전체 컨테이너 종료 -->
+		</div>
+		<br>
+		<!-- 풋터영역 분할 -->
+        <% include ./footer.ejs %>
+    </body>
+</html> 

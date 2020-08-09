@@ -1,0 +1,75 @@
+<title>My Job Note!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--메인 css 로딩-> W3C의 스타일 시트 사용-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+
+<!--외부 아이콘 패키지 삽입-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--외부 글꼴 삽입 (주아체)-->
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+
+<!-- 제이쿼리 삽입 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!--다음 지도 불러오기-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70eda434288faaaf04d2db3823c9cadf"></script>
+
+<script>
+	//모바일 화면에서 네비게이션 바 메뉴를 클릭하면 메뉴가 출력되도록 함
+	function openNav() {
+		var x = document.getElementById("navDemo");
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else { 
+			x.className = x.className.replace(" w3-show", "");
+		}
+	}
+</script>
+<style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: 'Jua', sans-serif;}
+	.mySlides {display:none;}
+	.respon-input {
+		width:100%;
+		margin:0px;
+		padding:0px;
+	}
+	/* 일부 카드에 대한 미디어 쿼리 적용. 모바일과 PC버전에 따라서 여백을 달리해야 하는 요소들이 일부 존재 */
+	@media only screen and (min-width: 768px) {
+		/* For desktop: */
+		.col-1 {margin:16px!important}
+		.col-2 {margin-left:16px!important}
+	}
+	/* 3단 열 메뉴로 구성되어 있어서 1000px 이하에서는 모바일 버전으로 전환하는 것이 시각적으로 좋다. */
+	@media (min-width:1000px){
+		.w3-col.am1{width:8.33333%}
+		.w3-col.am2{width:16.66666%}
+		.w3-col.am3,.w3-quarter{width:24.99999%}
+		.w3-col.am4,.w3-third{width:33.33333%}
+		.w3-col.am5{width:41.66666%}
+		.w3-col.am6,.w3-half{width:49.99999%}
+		.w3-col.am7{width:58.33333%}
+		.w3-col.am8,.w3-twothird{width:66.66666%}
+		.w3-col.am9,.w3-threequarter{width:74.99999%}
+		.w3-col.am10{width:83.33333%}
+		.w3-col.am11{width:91.66666%}
+		.w3-col.am12{width:99.99999%}
+	}
+	
+	/* pc모드에서 보여질 메뉴바 표시: */
+	@media (max-width:1002px) and (min-width:814px){.w3-hide-amedium{display:none!important}}
+	
+	/* 모바일 모드에서 보여질 메뉴바 표시: */
+	@media (max-width:814px){
+		.w3-modal-content{margin:0 10px;width:auto!important}
+		.w3-modal{padding-top:30px}
+		.w3-dropdown-hover.w3-mobile .w3-dropdown-content,.w3-dropdown-click.w3-mobile .w3-dropdown-content{position:relative}	
+		.w3-hide-small{display:none!important}
+		.w3-mobile{display:block;width:100%!important}
+		.w3-bar-item.w3-mobile,.w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
+		.w3-dropdown-hover.w3-mobile,.w3-dropdown-hover.w3-mobile .w3-btn,.w3-dropdown-hover.w3-mobile .w3-button,.w3-dropdown-click.w3-mobile,.w3-dropdown-click.w3-mobile .w3-btn,.w3-dropdown-click.w3-mobile .w3-button{width:100%}
+	}
+</style>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--헤더영역 분할-->
+        <% include ./head.ejs %>    
+    </head>
+	
+	<body class="w3-theme-l5">
+		<!--네비게이션 바 영역 분할-->
+		<% include ./nav.ejs %>
+		<div class="w3-container " style="margin-top:80px;">    
+			<div class="w3-card w3-round w3-white w3-content" style="width:1090px;">
+				<div class="w3-padding">
+					<!--잡코리아에서 제공해주는 월간 취업일정 달력 가져오기, 외부 프레임을 그대로 가져온다. -->
+					<iframe id="pageFrame" name="pageFrame" src="http://www.jobkorea.co.kr/Starter/calendar/sub/month?edu=5" frameborder="0"
+					width="950px" height="1600px" scrolling="auto"></iframe>
+				</div>
+			</div>
+		</div>
+		<br>
+		<% include ./footer.ejs %>
+	</body>
+</html> 

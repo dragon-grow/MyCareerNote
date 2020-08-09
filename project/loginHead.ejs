@@ -1,0 +1,105 @@
+<meta charset="UTF-8">
+<title>Login</title>
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+
+<!--구글 폰트 삽입-->
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+
+<style>
+	body {
+		background-image: url('/project/damhun1.jpg');
+		background-repeat: no-repeat;
+		background-size:cover;
+		vertical-align: middle;
+	}
+	h1 {
+		font-family: 'Do Hyeon', sans-serif;
+	}
+	.write_font {
+		font-family: 'Do Hyeon', sans-serif;
+		font-size : 35pt;
+		text-align: center;
+	}
+	.card {
+		position:absolute;
+		box-shadow:0 2px 5px 0 rgba(0,0,0,0.56),0 2px 10px 0 rgba(0,0,0,0.12);
+		background-color:rgba(255,255,255,0.6);
+		width: 70%;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		-ms-transform:translate(-50%,-50%);
+		padding: 2em;
+		max-width: 350px;
+	}
+	.respon-input {
+		padding:8px;
+		display:block;
+		border:none;
+		border-bottom:1px solid #ccc;
+		width:100%
+	}
+	.respon-label {
+		width: 10px;
+	}
+	.button {
+		border:none;
+		display:inline-block;
+		padding:8px 16px;
+		vertical-align:middle;
+		overflow:hidden;
+		text-decoration:none;
+		color:whitesmoke;
+		background-color:rgba(255,127,0,1);
+		text-align:center;
+		cursor:pointer;
+		white-space:nowrap;
+	}
+	.button_create {
+		border:none;
+		display:inline-block;
+		padding:8px 16px;
+		vertical-align:middle;
+		overflow:hidden;
+		text-decoration:none;
+		color:whitesmoke;
+		background-color:rgba(24,48,114,1);
+		text-align:center;
+		cursor:pointer;
+		white-space:nowrap;
+	}
+	.create_card {
+		display: none;
+		position:absolute;
+		box-shadow:0 2px 5px 0 rgba(0,0,0,0.56),0 2px 10px 0 rgba(0,0,0,0.12);
+		background-color:rgba(255,255,255,0.6);
+		width: 70%;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		-ms-transform:translate(-50%,-50%);
+		padding: 2em;
+		max-width: 350px;
+	}
+	#footer {
+		margin: 0px;
+		padding: 0px;
+		position:absolute;
+		bottom:0;
+		width:99.9%;
+		height:18px;
+		background:rgba(34,68,156,1);
+	}
+	.footer-font{
+		font-size: 8pt;
+		color: white;
+		font-style: oblique;
+		text-align-last: center;
+		padding: 0px;
+		margin: 0px;
+	}
+</style>
+	<!--서버로부터 입력정보가 틀리다는 응답을 받으면 알림창 출력 -->
+	<% if(result==false) {%>
+		<script> alert("아이디와 비밀번호를 확인해주세요."); </script>
+	<% } %>

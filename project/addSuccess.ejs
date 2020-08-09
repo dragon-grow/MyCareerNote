@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<!--헤더 영역 분할-->
+		<% include ./loginHead.ejs %>
+	</head>
+    <body>
+        <section>
+            <div class="card" id="login_basic">
+				<!--EJS를 통한 사용자 이름 동적 출력-->
+                <h1><%=username%>님 반갑습니다!</h1>
+				<!--로그인 화면으로 돌아가는 버튼-->
+				<a href="/project/login"><button class="button_create" value="goLogin">로그인하기ㅎ</button></a>
+            </div>
+        </section>
+        
+        <footer id="footer">
+            <p class="footer-font">Copyright&copy; 2018 Choyongtae. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>					 
+		<!--헤더영역 분리-->
+        <% include ./head.ejs %>
+		
+		<!--서버의 응답에 따라 결과알림 출력-->
+		<% if(result==true){ %>
+		<script> alert("저장이 완료되었습니다!"); </script>
+		<% } else if(result==false) {%>
+		<script> alert("저장 실패하였습니다."); </script>
+		<% } %>
+    </head>
+	<body class="w3-theme-l5">
+		<!--네비게이션 바 영역 분할-->
+		<% include ./nav.ejs %>
+		<div class="w3-container" style="margin-top:80px;">
+			<!--학점 수정 영역시작-->
+			<div class="w3-card w3-white w3-content w3-padding">
+				<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-refresh fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>My Grade Edit</h2>
+				<h6 class="w3-opacity">Tip! 자신이 현재까지 이수한 학점과 평점을 입력해주시면 됩니다.</h6>
+				<div>
+					<!--학점 정보 입력 폼, 서버에 전송함-->
+					<form method="post" action="/process/addgrade">
+						<table class="w3-table-all w3-card-4 w3-centered W3-hoverable">
+							<tr><th>구분</th><th>필요</th><th>이수</th></tr>
+							<tr><td>전공</td><td>76</td>
+							<td><input type="text" name="major" class="respon-input" required></td></tr>
+							<tr><td>교양</td><td>18</td>
+							<td><input type="text" name="culture" class="respon-input" required></td></tr>
+							<tr><td>HRD</td><td>14</td>
+							<td><input type="text" name="hrd" class="respon-input" required></td></tr>
+							<tr><td>MSC</td><td>30</td>
+							<td><input type="text" name="msc" class="respon-input" required></td></tr>
+							<tr><td>자유</td><td>12</td><td><input type="text" name="free" class="respon-input" required></td></tr>
+							<tr><td>평점</td><td>4.5만점</td>
+							<td><input type="text" name="total" class="respon-input" required></td></tr>
+							<tr><td>TOEIC</td><td>600만점</td>
+							<td><input type="text" name="toeic" class="respon-input" required></td></tr>
+							<tr><td>졸업작품</td><td colspan="2"><input type="checkbox" name="art" class="respon-input"></td></tr>
+							<tr><td>현장실습</td><td colspan="2"><input type="checkbox" name="field" class="respon-input"></td></tr>
+							<tr><td>기술자격</td><td colspan="2"><input type="checkbox" name="license" class="respon-input"></td></tr>
+						</table>
+						<input type="submit" value="update" name="" class="w3-button w3-block w3-red w3-section">
+					</form>
+				</div> 
+			</div>
+			<!--학점 수정 영역 종료-->
+		</div>
+		<br>
+		<!--풋터영역 분할-->
+		<% include ./footer.ejs %>
+	</body>
+</html> 
